@@ -1,77 +1,97 @@
-// Mobile nav toggle with accessibility & small UX improvements
-const navToggle = document.getElementById('nav-toggle');
-const navMenu = document.getElementById('nav-menu');
-const navLinks = navMenu ? Array.from(navMenu.querySelectorAll('a')) : [];
-let menuOpen = false;
+// ===============================
+// MOBILE NAV TOGGLE
+// ===============================
+const navToggle = document.getElementById("nav-toggle");
+const navMenu = document.getElementById("nav-menu");
+const navLinks = navMenu ? navMenu.querySelectorAll("a") : [];
+let isMenuOpen = false;
 
-function setNavAria(open) {
-  if (navToggle) navToggle.setAttribute('aria-expanded', String(open));
-  if (navMenu) {
-    if (open) navMenu.classList.add('show');
-    else navMenu.classList.remove('show');
-  }
-  menuOpen = !!open;
+function toggleMenu(open) {
+  if (!navMenu || !navToggle) return;
+
+  isMenuOpen = open;
+  navMenu.classList.toggle("show", open);
+  navToggle.setAttribute("aria-expanded", open);
 }
 
 if (navToggle && navMenu) {
-  navToggle.addEventListener('click', () => {
-    setNavAria(!menuOpen);
-    if (menuOpen) navToggle.classList.add('open'); else navToggle.classList.remove('open');
+  navToggle.addEventListener("click", () => {
+    toggleMenu(!isMenuOpen);
   });
 
-  // Close menu when a nav link is clicked (mobile)
-  navLinks.forEach(a => {
-    a.addEventListener('click', () => setNavAria(false));
+  // Close menu when link is clicked (mobile)
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => toggleMenu(false));
   });
 
-  // Close with Escape key for accessibility
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuOpen) {
-      setNavAria(false);
+  // Close menu on ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isMenuOpen) {
+      toggleMenu(false);
       navToggle.focus();
     }
   });
 }
 
-// Highlight active nav link on scroll / click
+// ===============================
+// ACTIVE NAV LINK ON SCROLL
+// ===============================
 function updateActiveNav() {
-  const fromTop = window.scrollY + 90; // offset to consider header height
+  const scrollPos = window.scrollY + 100;
+
   navLinks.forEach(link => {
-    const hash = link.getAttribute('href');
-    if (!hash || !hash.startsWith('#')) return;
-    const section = document.querySelector(hash);
+    const id = link.getAttribute("href");
+    if (!id || !id.startsWith("#")) return;
+
+    const section = document.querySelector(id);
     if (!section) return;
+
     const top = section.offsetTop;
     const bottom = top + section.offsetHeight;
-    if (fromTop >= top && fromTop < bottom) link.classList.add('active');
-    else link.classList.remove('active');
+
+    if (scrollPos >= top && scrollPos < bottom) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
   });
 }
-window.addEventListener('scroll', updateActiveNav);
-window.addEventListener('load', updateActiveNav);
-window.addEventListener('resize', updateActiveNav);
 
-// Smooth scroll for internal anchors (improves behavior on some browsers)
+window.addEventListener("scroll", updateActiveNav);
+window.addEventListener("load", updateActiveNav);
+window.addEventListener("resize", updateActiveNav);
+
+// ===============================
+// SMOOTH SCROLL + ACCESSIBILITY
+// ===============================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#' || href === '#0') return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      // Close mobile menu if open
-      setNavAria(false);
-      // Smooth scroll with focus for accessibility
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // After scrolling, move focus for keyboard users
-      setTimeout(() => {
-        target.setAttribute('tabindex', '-1');
-        target.focus({ preventScroll: true });
-      }, 400);
-    }
+  anchor.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    if (targetId === "#" || targetId === "#0") return;
+
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    e.preventDefault();
+    toggleMenu(false);
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    // Focus for keyboard users
+    setTimeout(() => {
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+    }, 400);
   });
 });
 
-// dynamic year
-const yearSpan = document.getElementById('year');
-if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+// ===============================
+// FOOTER YEAR
+// ===============================
+const yearSpan = document.getElementById("year");
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
