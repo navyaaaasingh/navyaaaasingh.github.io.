@@ -148,8 +148,8 @@ function drawFrame() {
       const dx = a.x - b.x, dy = a.y - b.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < LINK_DIST) {
-        const alpha = (1 - dist / LINK_DIST) * 0.35;
-        ctx.strokeStyle = `rgba(255, 111, 160, ${alpha})`;
+        const alpha = (1 - dist / LINK_DIST) * 0.45;
+        ctx.strokeStyle = `rgba(233, 30, 99, ${alpha})`;
         ctx.lineWidth = 0.6;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -163,7 +163,7 @@ function drawFrame() {
   nodes.forEach(n => {
     ctx.beginPath();
     ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255, 185, 209, 0.55)";
+    ctx.fillStyle = "rgba(214, 51, 132, 0.6)";
     ctx.fill();
   });
 
