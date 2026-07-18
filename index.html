@@ -2,236 +2,355 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Navya Singh — AI Engineer · Software Engineer · Product Builder</title>
-<meta name="description" content="Portfolio of Navya Singh — AI Engineer, Software Engineer and Product Builder. RAG systems, automation platforms and full-stack products.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navya Singh — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="container nav-container">
-    <a class="logo" href="#top">Navya<span class="dot">.</span></a>
-    <nav id="nav-menu" class="nav">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<!-- Grain / noise overlay -->
+<div class="grain"></div>
+
+<!-- Custom cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav__mark">NS</a>
+  <ul class="nav__links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav__cta">Let's talk</a>
+  <button class="nav__burger" id="navBurger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <canvas class="hero__web" id="webCanvas"></canvas>
+
+  <div class="hero__inner">
+    <p class="eyebrow reveal">AI Engineering · Software Development · Bennett University</p>
+
+    <h1 class="hero__name reveal">
+      <span class="hero__name-line">Navya</span>
+      <span class="hero__name-line hero__name-line--accent">Singh</span>
+    </h1>
+
+    <p class="hero__tagline reveal">
+      I build things that sit at the edge of language and logic — retrieval systems,
+      automation pipelines, and interfaces that feel considered. Currently an
+      AI &amp; Systems Intern, chasing 8.53 CGPA and internships in Software / AI Engineering.
+    </p>
+
+    <div class="hero__actions reveal">
+      <a href="#projects" class="btn btn--primary">View my work</a>
+      <a href="#contact" class="btn btn--ghost">Get in touch</a>
+    </div>
   </div>
+
+  <div class="hero__portrait reveal">
+    <div class="portrait-ring">
+      <svg class="portrait-ring__svg" viewBox="0 0 320 320">
+        <circle cx="160" cy="160" r="150" />
+      </svg>
+      <div class="portrait-frame" id="portraitFrame">
+        <img id="portraitImg" src="" alt="Navya Singh portrait" style="display:none;">
+        <div class="portrait-placeholder" id="portraitPlaceholder">
+          <span>NS</span>
+        </div>
+        <label for="photoUpload" class="portrait-upload" title="Upload your photo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h3l2-3h6l2 3h3v13H4V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        </label>
+        <input type="file" id="photoUpload" accept="image/*" hidden>
+      </div>
+    </div>
+    <div class="floating-tag floating-tag--1">Python</div>
+    <div class="floating-tag floating-tag--2">RAG</div>
+    <div class="floating-tag floating-tag--3">React.js</div>
+    <div class="floating-tag floating-tag--4">LLMs</div>
+  </div>
+
+  <a href="#about" class="scroll-cue" aria-label="Scroll down">
+    <span></span>
+  </a>
 </header>
 
 <main>
 
-<!-- ============ HERO ============ -->
-<section id="top" class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy reveal">
-      <p class="eyebrow">AI Engineer &nbsp;/&nbsp; Software Engineer &nbsp;/&nbsp; Product Builder</p>
-      <h1 class="hero-title">Navya&nbsp;Singh</h1>
-      <p class="hero-lede">I design systems that turn raw, messy data into grounded answers — then ship them with the judgment of someone who thinks about the product, not just the model.</p>
-      <p class="hero-desc">Currently building an AI-driven job broadcasting platform at Primed Solutions, automating a workflow that used to take a team of eight. Computer Science undergraduate at Bennett University.</p>
-      <div class="buttons">
-        <a class="btn primary" href="#projects">View my work</a>
-        <a class="btn ghost" href="resume.pdf">Download résumé</a>
-      </div>
-      <div class="socials">
-        <a href="https://github.com/navyaaasingh">GitHub ↗</a>
-        <a href="https://linkedin.com/in/navya243">LinkedIn ↗</a>
-      </div>
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section__head reveal">
+      <p class="eyebrow">01 — About</p>
+      <h2>Engineering with a product-shaped mind.</h2>
     </div>
-
-    <div class="hero-visual reveal">
-      <div class="pipeline-card">
-        <svg class="pipeline-svg" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path class="pipeline-path" d="M30,40 C90,40 90,110 160,110 C230,110 230,180 290,180" />
-          <g class="pipeline-node" style="--i:0"><circle cx="30" cy="40" r="7"/></g>
-          <g class="pipeline-node" style="--i:1"><circle cx="160" cy="110" r="7"/></g>
-          <g class="pipeline-node" style="--i:2"><circle cx="290" cy="180" r="7"/></g>
-        </svg>
-        <div class="pipeline-labels">
-          <span>Ingest</span><span>Retrieve</span><span>Generate</span>
+    <div class="about__grid">
+      <p class="about__lead reveal">
+        I'm a Computer Science undergraduate at Bennett University with a soft spot for the
+        moment an idea turns into a working system — whether that's a retrieval pipeline
+        grounding an LLM in real documents, or an automation that turns eight people's manual
+        workflow into one clean interface. I care about engineering fundamentals as much as
+        the experience someone has using what I build.
+      </p>
+      <div class="about__stats reveal">
+        <div class="stat">
+          <span class="stat__num" data-count="8.53">0</span>
+          <span class="stat__label">CGPA · B.Tech CSE</span>
         </div>
-      </div>
-      <div class="photo-card">
-        <div class="photo-wrap">
-          <img src="profile.jpeg" alt="Navya Singh">
+        <div class="stat">
+          <span class="stat__num" data-count="8">0</span>
+          <span class="stat__label">Person team, automated to one</span>
         </div>
-        <p class="photo-line">B.Tech CSE · Bennett University</p>
-        <p class="photo-line muted">Lucknow, India</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="stats-strip container reveal">
-    <div><span>10+</span><p>Projects shipped</p></div>
-    <div><span>2</span><p>Internships</p></div>
-    <div><span>8+</span><p>Technologies</p></div>
-    <div><span>8.53</span><p>CGPA</p></div>
-  </div>
-</section>
-
-<!-- ============ ABOUT ============ -->
-<section id="about" class="section container">
-  <p class="section-eyebrow reveal">01 — About</p>
-  <div class="about-grid reveal">
-    <h2 class="about-heading">I work at the point where AI capability meets product judgment.</h2>
-    <p class="about-body">I'm a Computer Science undergraduate who works across the stack — grounding LLMs in real data with Retrieval-Augmented Generation, shipping the React interfaces and APIs around them, and asking whether a feature is actually worth building before I build it. I like problems where the interesting question isn't just "can this be automated," but "should it be, and for whom."</p>
-  </div>
-</section>
-
-<!-- ============ SKILLS ============ -->
-<section id="skills" class="section section-alt">
-  <div class="container">
-    <p class="section-eyebrow reveal">02 — Skills</p>
-    <h2 class="section-heading reveal">Toolkit</h2>
-    <div class="skills-grid">
-      <div class="skills-card reveal">
-        <h3>AI &amp; Machine Learning</h3>
-        <div class="tags">
-          <span>RAG pipelines</span><span>LLM integration</span><span>SpaCy</span><span>TextBlob</span><span>Scikit-learn</span>
+        <div class="stat">
+          <span class="stat__num" data-count="25" data-suffix="%">0</span>
+          <span class="stat__label">UI performance improvement</span>
         </div>
-      </div>
-      <div class="skills-card reveal">
-        <h3>Languages</h3>
-        <div class="tags">
-          <span>Python</span><span>C++</span><span>Java</span><span>JavaScript</span>
-        </div>
-      </div>
-      <div class="skills-card reveal">
-        <h3>Frontend</h3>
-        <div class="tags">
-          <span>React</span><span>HTML5</span><span>CSS3</span>
-        </div>
-      </div>
-      <div class="skills-card reveal">
-        <h3>Backend &amp; Data</h3>
-        <div class="tags">
-          <span>Node.js</span><span>Express</span><span>REST APIs</span><span>MongoDB</span><span>SQL</span>
-        </div>
-      </div>
-      <div class="skills-card reveal">
-        <h3>Tools &amp; Workflow</h3>
-        <div class="tags">
-          <span>Git</span><span>GitHub</span><span>VS Code</span><span>Postman</span>
-        </div>
-      </div>
-      <div class="skills-card reveal">
-        <h3>Product</h3>
-        <div class="tags">
-          <span>Requirements scoping</span><span>Workflow automation</span><span>Stakeholder prototypes</span><span>User-centric iteration</span>
+        <div class="stat">
+          <span class="stat__num" data-count="4">0</span>
+          <span class="stat__label">Shipped end-to-end projects</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ PROJECTS ============ -->
-<section id="projects" class="section container">
-  <p class="section-eyebrow reveal">03 — Projects</p>
-  <h2 class="section-heading reveal">Selected work</h2>
-
-  <div class="projects-grid">
-
-    <article class="project-card featured reveal">
-      <p class="project-flag">Featured</p>
-      <h3>AI-Powered RFP Response Generator</h3>
-      <ul>
-        <li>Built a Retrieval-Augmented Generation (RAG) system that ingests company manuals, FAQs, and historical RFP responses.</li>
-        <li>Generated grounded, source-cited responses for new RFP questions using semantic retrieval and LLMs.</li>
-        <li>Designed the complete document ingestion, indexing, retrieval, and answer generation pipeline.</li>
-        <li>Reduced manual effort by enabling human reviewers to validate AI-generated drafts before submission.</li>
-      </ul>
-      <p class="meta">Python · RAG · LLM · Vector Search</p>
-    </article>
-
-    <article class="project-card reveal">
-      <h3>Chat Analysis using NLP</h3>
-      <ul>
-        <li>Built a sentiment and intent analysis pipeline over chat transcripts using SpaCy and TextBlob.</li>
-        <li>Surfaced patterns human reviewers could act on, rather than raw scores alone.</li>
-      </ul>
-      <p class="meta">Python · SpaCy · TextBlob</p>
-    </article>
-
-    <article class="project-card reveal">
-      <h3>Rental Property App</h3>
-      <ul>
-        <li>Full-stack listings platform with search, filtering, and enquiry flows.</li>
-        <li>Built end-to-end on React, Node.js and MongoDB.</li>
-      </ul>
-      <p class="meta">React · Node.js · MongoDB</p>
-    </article>
-
-    <article class="project-card reveal">
-      <h3>Recipe Finder</h3>
-      <ul>
-        <li>Recipe recommendation web app matching ingredients on hand to relevant recipes.</li>
-      </ul>
-      <p class="meta">JavaScript · REST APIs</p>
-    </article>
-
-  </div>
-</section>
-
-<!-- ============ EXPERIENCE ============ -->
-<section id="experience" class="section section-alt">
-  <div class="container">
-    <p class="section-eyebrow reveal">04 — Experience</p>
-    <h2 class="section-heading reveal">Where I've worked</h2>
+  <!-- EXPERIENCE -->
+  <section class="section experience" id="experience">
+    <div class="section__head reveal">
+      <p class="eyebrow">02 — Experience</p>
+      <h2>Where I've been building.</h2>
+    </div>
 
     <div class="timeline">
-
-      <div class="timeline-item reveal">
-        <span class="date">July 2026 – Present</span>
-        <h3>AI &amp; Systems Intern — Primed Solutions</h3>
-        <ul>
-          <li>Designed and developed an AI-powered job broadcasting platform that automatically fetches and distributes personalized job opportunities to hundreds of students.</li>
-          <li>Automated a workflow previously handled manually by a team of eight, significantly improving operational efficiency and reducing repetitive work.</li>
-          <li>Integrated multiple job APIs with intelligent filtering based on skills, location, and experience to deliver highly relevant opportunities.</li>
-          <li>Built an automated email distribution pipeline enabling scalable, reliable, and faster job dissemination.</li>
-        </ul>
+      <div class="timeline__item reveal">
+        <div class="timeline__marker"></div>
+        <div class="timeline__content">
+          <span class="timeline__date">Jun 2026 — Present</span>
+          <h3>AI &amp; Systems Intern</h3>
+          <span class="timeline__org">Primed Solutions</span>
+          <p>
+            Designed an AI-powered job broadcasting system that fetches relevant openings and
+            distributes personalized links to hundreds of students at once — replacing a manual
+            process previously run by a team of eight. Built the end-to-end pipeline: multiple
+            job API integrations, keyword / location / experience filtering, and automated
+            email distribution.
+          </p>
+          <div class="timeline__tags">
+            <span>Python</span><span>API Integration</span><span>Automation</span><span>Email Pipelines</span>
+          </div>
+        </div>
       </div>
 
-      <div class="timeline-item reveal">
-        <span class="date">Jul 2025 – Aug 2025</span>
-        <h3>Frontend Developer Intern — UX Team</h3>
-        <ul>
-          <li>Built and shipped responsive React interfaces from design handoff to production.</li>
-          <li>Improved page performance by 25% through render and asset optimization.</li>
-          <li>Applied SEO best practices across key user-facing pages.</li>
-        </ul>
+      <div class="timeline__item reveal">
+        <div class="timeline__marker"></div>
+        <div class="timeline__content">
+          <span class="timeline__date">Jul 2025 — Aug 2025</span>
+          <h3>Frontend Developer Intern</h3>
+          <span class="timeline__org">UX Team</span>
+          <p>
+            Developed responsive UI components in React.js and improved UI performance by
+            roughly 25% through component optimization, while applying SEO best practices to
+            improve search visibility.
+          </p>
+          <div class="timeline__tags">
+            <span>React.js</span><span>Performance</span><span>SEO</span>
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ CONTACT ============ -->
-<section id="contact" class="section container">
-  <p class="section-eyebrow reveal">05 — Contact</p>
-  <div class="contact-card reveal">
-    <h2>Let's talk.</h2>
-    <p>Open to AI engineering, software engineering, and product roles.</p>
-    <div class="contact-links">
-      <a href="mailto:singhh.navya241@gmail.com">singhh.navya241@gmail.com</a>
-      <a href="https://github.com/navyaaasingh">github.com/navyaaasingh</a>
-      <a href="https://linkedin.com/in/navya243">linkedin.com/in/navya243</a>
+  <!-- PROJECTS -->
+  <section class="section projects" id="projects">
+    <div class="section__head reveal">
+      <p class="eyebrow">03 — Projects</p>
+      <h2>Things I've shipped.</h2>
     </div>
-  </div>
-</section>
+
+    <div class="project-grid">
+      <article class="project-card reveal">
+        <div class="project-card__glow"></div>
+        <span class="project-card__index">01</span>
+        <h3>AI-Powered RFP Response Generator</h3>
+        <p>
+          A Retrieval-Augmented Generation system that ingests company RFP responses, manuals,
+          and FAQs to generate grounded, source-cited draft answers for new RFP questions —
+          built end-to-end from ingestion and indexing to retrieval and answer generation.
+        </p>
+        <div class="project-card__stack">
+          <span>Python</span><span>RAG</span><span>LLMs</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-card__glow"></div>
+        <span class="project-card__index">02</span>
+        <h3>Chat Analysis using NLP</h3>
+        <p>
+          An NLP application analyzing sentiment, polarity, and subjectivity of chat
+          conversations — with tokenization, lemmatization, and stop-word removal, classifying
+          conversations into Positive, Negative, and Neutral categories.
+        </p>
+        <div class="project-card__stack">
+          <span>Python</span><span>SpaCy</span><span>TextBlob</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-card__glow"></div>
+        <span class="project-card__index">03</span>
+        <h3>Rental Property App</h3>
+        <p>
+          A responsive rental platform with authentication and property listings, including full
+          CRUD functionality for landlords and tenants, backed by MongoDB for listings and user
+          data.
+        </p>
+        <div class="project-card__stack">
+          <span>React.js</span><span>Node.js</span><span>MongoDB</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-card__glow"></div>
+        <span class="project-card__index">04</span>
+        <h3>Recipe Finder App</h3>
+        <p>
+          A recipe recommendation application based on user-provided ingredients, with
+          API-based search, dynamic filtering, and rendering optimized using React Hooks and
+          the Context API.
+        </p>
+        <div class="project-card__stack">
+          <span>React.js</span><span>Hooks</span><span>Context API</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section skills" id="skills">
+    <div class="section__head reveal">
+      <p class="eyebrow">04 — Skills</p>
+      <h2>My toolkit.</h2>
+    </div>
+
+    <div class="skills__grid">
+      <div class="skill-group reveal">
+        <h4>Programming</h4>
+        <div class="skill-tags">
+          <span>C++</span><span>Python</span><span>JavaScript</span><span>Java</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Frontend</h4>
+        <div class="skill-tags">
+          <span>React.js</span><span>HTML</span><span>CSS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Backend</h4>
+        <div class="skill-tags">
+          <span>Node.js</span><span>MongoDB</span><span>SQL</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Machine Learning / NLP</h4>
+        <div class="skill-tags">
+          <span>RAG</span><span>SpaCy</span><span>TextBlob</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Tools</h4>
+        <div class="skill-tags">
+          <span>Git</span><span>GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + LEADERSHIP -->
+  <section class="section split" id="education">
+    <div class="split__col reveal">
+      <p class="eyebrow">05 — Education</p>
+      <h2>Grounding.</h2>
+      <div class="edu-item">
+        <h3>Bennett University</h3>
+        <span class="edu-item__meta">B.Tech, Computer Science Engineering · 2023 – 2027</span>
+        <span class="edu-item__meta edu-item__meta--accent">CGPA: 8.53</span>
+      </div>
+      <div class="edu-item">
+        <h3>City Montessori School</h3>
+        <span class="edu-item__meta">Intermediate · 94.5%</span>
+      </div>
+      <div class="edu-item">
+        <h3>St. Fidelis College</h3>
+        <span class="edu-item__meta">High School · 92.5%</span>
+      </div>
+    </div>
+
+    <div class="split__col reveal">
+      <p class="eyebrow">06 — Leadership &amp; Achievements</p>
+      <h2>Beyond the code.</h2>
+      <ul class="lead-list">
+        <li>
+          <strong>Management Co-Head, CodeChef Bennett University</strong>
+          <span>Sep 2024 – Mar 2025 · Organized coding events and workshops, increasing participation by 20%.</span>
+        </li>
+        <li>
+          <strong>Event Coordinator, Zenevia Tech Fest</strong>
+          <span>Nov 2024 – Feb 2025 · Led a team of 15+ students to manage technical events.</span>
+        </li>
+        <li>
+          <strong>Prefect &amp; NGO Volunteer</strong>
+          <span>2020 – 2023</span>
+        </li>
+        <li>
+          <strong>Merit Scholarship Recipient</strong>
+          <span>2023 – 2025 · Awarded for academic excellence.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="contact__inner reveal">
+      <p class="eyebrow">07 — Contact</p>
+      <h2>Let's build something.</h2>
+      <p class="contact__sub">
+        Open to Software Engineering, AI Engineering, and Product Management internships.
+        Reach out — I reply fast.
+      </p>
+      <a href="mailto:singh.navya241@gmail.com" class="contact__email">singh.navya241@gmail.com</a>
+      <div class="contact__links">
+        <a href="tel:+919029674152">+91 90296 74152</a>
+        <a href="#" data-social="linkedin">LinkedIn</a>
+        <a href="#" data-social="github">GitHub</a>
+        <a href="#" data-social="portfolio">Portfolio</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer class="footer">
-  <p>© <span id="year"></span> Navya Singh</p>
+  <span>© <span id="year"></span> Navya Singh</span>
+  <span>Built with intent, styled in pink.</span>
 </footer>
 
 <script src="script.js"></script>
